@@ -101,7 +101,7 @@ router.post("/regrider", async (req, res) => {
     // Insert rider ใหม่
     const result = await db.run(
       `INSERT INTO rider (phone, password, Fname, Lname, img, Veh_img, plate)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+       VALUES (?, ?, ?, ?, ?, ?, ?)`,
       [phone, password, Fname, Lname, img, Veh_img, plate]
     );
 
