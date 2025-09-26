@@ -85,10 +85,10 @@ router.post("/regrider", async (req, res) => {
   try {
     const db = await conn;
 
-    const { rID, phone, password, Fname, Lname, img, Veh_img, plate } = req.body;
+    const { phone, password, Fname, Lname, img, Veh_img, plate } = req.body;
 
     // ตรวจสอบ input
-    if (!rID || !phone || !password || !Fname || !Lname || !img || !Veh_img || !plate) {
+    if (!phone || !password || !Fname || !Lname || !img || !Veh_img || !plate) {
       return res.status(400).json({ error: "All fields are required" });
     }
 
@@ -100,9 +100,9 @@ router.post("/regrider", async (req, res) => {
 
     // Insert rider ใหม่
     const result = await db.run(
-      `INSERT INTO rider (rID, phone, password, Fname, Lname, img, Veh_img, plate)
+      `INSERT INTO rider (phone, password, Fname, Lname, img, Veh_img, plate)
        VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
-      [rID, phone, password, Fname, Lname, img, Veh_img, plate]
+      [phone, password, Fname, Lname, img, Veh_img, plate]
     );
 
     res.status(201).json({
